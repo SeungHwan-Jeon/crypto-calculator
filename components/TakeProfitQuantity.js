@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 
 export default function TakeProfitQuantity() {
   const [asset, setAsset] = useState(0); // 초기값 0
+  const [lossLimit, setLossLimit] = useState(0); // 초기값 0
+  const [stopLoss, setStopLoss] = useState(0); // 초기값 0
   const [winCount, setWinCount] = useState(0); // 초기값 0
   const [loseCount, setLoseCount] = useState(0); // 초기값 0
   const [winRate, setWinRate] = useState(0); // 초기값 0
@@ -48,7 +50,28 @@ export default function TakeProfitQuantity() {
               min={0}
               type="number"
             />
-            보유 자산
+            보유 자산(USDT)
+            <input
+              value={lossLimit}
+              onChange={(e) => {
+                const value = e.target.value;
+                setLossLimit(value);
+              }}
+              min={0}
+              type="number"
+            />
+            손실 허용 범위(%)
+          </div>
+          <div>
+            <input
+              value={stopLoss}
+              onChange={(e) => {
+                const value = e.target.value;
+                setStopLoss(value);
+              }}
+              type="number"
+            />
+            로스컷(%)
           </div>
           <div>
             <input
