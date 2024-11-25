@@ -4,10 +4,11 @@ import "../styles/TakeProfitQuantity.css";
 import { useState, useEffect } from "react";
 
 export default function TakeProfitQuantity() {
+  const [asset, setAsset] = useState(0); // 초기값 0
   const [winCount, setWinCount] = useState(0); // 초기값 0
   const [loseCount, setLoseCount] = useState(0); // 초기값 0
   const [winRate, setWinRate] = useState(0); // 초기값 0
-  const [rR, setRR] = useState(0); // 초기값 0
+  const [rR, setRR] = useState(1); // 초기값 0
   const [minTPQuantity, setMinTPQuantity] = useState(0); // 초기값 0
 
   useEffect(() => {
@@ -37,6 +38,18 @@ export default function TakeProfitQuantity() {
     <>
       <div>
         <div className="inputContainer">
+          <div>
+            <input
+              value={asset}
+              onChange={(e) => {
+                const value = e.target.value;
+                setAsset(value);
+              }}
+              min={0}
+              type="number"
+            />
+            보유 자산
+          </div>
           <div>
             <input
               value={winCount}
@@ -71,6 +84,7 @@ export default function TakeProfitQuantity() {
                 setRR(value);
               }}
               type="number"
+              min={0}
               step={0.1}
             />
             손익비
